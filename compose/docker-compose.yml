@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+ as-stats:
+  image: registry.hexanet.fr:5000/as-stats
+  ports:
+   - "8080:80"
+   - "5000:5000/udp"
+  environment:
+   - NETFLOW=1
+   - NETFLOW_PORT=5000
+   - TZ=Europe/Paris
+   - CONF_FILE=config.inc
+  volumes:
+   - /home/admin/as-stats:/data/as-stats
+
