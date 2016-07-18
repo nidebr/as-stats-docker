@@ -1,7 +1,7 @@
 AS-Stats Docker
 ===============
 
-A tool writed by Manuel Kasper <mk@neon1.net> for Monzoon Networks AG.
+A tool writted by Manuel Kasper <mk@neon1.net> for Monzoon Networks AG.
 
 This tool generate per-AS traffic graphs from NetFlow/sFlow records.
 
@@ -86,3 +86,23 @@ Docker compose file exemple :
        - TZ=Europe/Paris
       volumes:
        - <my directory>:/data/as-stats
+
+## Config file for web UI
+
+Config file for WebUI a here :
+
+    vim <my directory>/config.inc
+
+See [AS-Stats Repository](https://github.com/manuelkasper/AS-Stats) for more details.
+
+### Launch manually stats day
+
+    docker exec -it as-stats stats-day
+
+__Important: When docker image start, startup script wait 2 minutes and launch automaticaly this script. I recommand wait ~5/10 minutes and restart "manually stats day", its for the first stats appear on WebUI.__
+
+### Bash access
+
+If you want to enter instance :
+
+    docker exec -it as-stats bash
