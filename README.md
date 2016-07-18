@@ -3,7 +3,7 @@ AS-Stats Docker
 
 A tool writted by Manuel Kasper <mk@neon1.net> for Monzoon Networks AG.
 
-This tool generate per-AS traffic graphs from NetFlow/sFlow records.
+This tool generate per-AS traffic graphs from NetFlow/SFlow records.
 
 
 See [AS-Stats Repository](https://github.com/manuelkasper/AS-Stats) for more details.
@@ -41,11 +41,11 @@ __Important: you must use tabs, not spaces, to separate fields!__
     NETFLOW           set 1 if you want enable Netflow
     NETFLOW_PORT      set udp port for Netflow daemon
 
-### For Sflow
+### For SFlow
 
-    SFLOW             set 1 if you want enable Sflow
-    SFLOW_PORT        set udp port for Sflow daemon
-    SFLOW_ASN         set your asn number for sflow daemon
+    SFLOW             set 1 if you want enable SFlow
+    SFLOW_PORT        set udp port for SFlow daemon
+    SFLOW_ASN         set your asn number for SFlow daemon
 
 ### TimeZone
 
@@ -62,11 +62,11 @@ __Important: Default timezone is UTC !__
 __Important: Change WebUI port and Netflow port according your configuration!__
 
 
-# For Sflow
+# For SFlow
 
     docker run -d --name=as-stats -e SFLOW=1 -e SFLOW_PORT=6000 -e SFLOW_ASN=1234 -e TZ=Europe/Paris -v <my directory>:/data/as-stats -p 80:80 -p 5000:5000/udp nidebr/as-stats
 
-__Important: Change WebUI port, Sflow port and ASN number according your configuration!__
+__Important: Change WebUI port, SFlow port and ASN number according your configuration!__
 
 ## Docker Compose
 
