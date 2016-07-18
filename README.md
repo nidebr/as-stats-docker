@@ -55,7 +55,18 @@ __Important: Default timezone is UTC !__
 
 ## Docker CLI
 
-    docker run -d --name=as-stats -e NETFLOW=1 -e NETFLOW_PORT=5000 -e TZ=Europe/Paris -v <my directory>:/data/as-stats nidebr/as-stats
+# For Netflow
+
+    docker run -d --name=as-stats -e NETFLOW=1 -e NETFLOW_PORT=5000 -e TZ=Europe/Paris -v <my directory>:/data/as-stats -p 80:80 -p 5000:5000/udp nidebr/as-stats
+
+__Important: Change WebUI port and Netflow port according your configuration!__
+
+
+# For Sflow
+
+    docker run -d --name=as-stats -e SFLOW=1 -e SFLOW_PORT=6000 -e SFLOW_ASN=1234 -e TZ=Europe/Paris -v <my directory>:/data/as-stats -p 80:80 -p 5000:5000/udp nidebr/as-stats
+
+__Important: Change WebUI port, Sflow port and ASN number according your configuration!__
 
 ## Docker Compose
 
