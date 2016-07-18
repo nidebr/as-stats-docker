@@ -9,7 +9,7 @@ This tool generate per-AS traffic graphs from NetFlow/sFlow records.
 See [AS-Stats Repository](https://github.com/manuelkasper/AS-Stats) for more details.
 
 ### Screenshot
-![AS-Stats Screenshot](docs/images/as-stats.png "AS-Stats Screenshot")
+![AS-Stats Screenshot](https://github.com/nidebr/as-stats-docker/raw/master/docs/images/as-stats.png "AS-Stats Screenshot")
 
 How to
 ------
@@ -21,6 +21,7 @@ Before to use it, make a right directory for persistante data.
     mkdir -p /data/conf /data/rrd
 
 Create a "knownlinks" file in /data/conf/
+
 See [AS-Stats Repository](https://github.com/manuelkasper/AS-Stats/blob/master/README.md#installation) for more details.
 
 __Example :__
@@ -37,26 +38,26 @@ __Important: you must use tabs, not spaces, to separate fields!__
 
 ### For Netflow
 
-    NETFLOW
-    NETFLOW_PORT
+    NETFLOW           set 1 if you want enable Netflow
+    NETFLOW_PORT      set udp port for Netflow daemon
 
 ### For Sflow
 
-    SFLOW
-    SFLOW_PORT
-    SFLOW_ASN
+    SFLOW             set 1 if you want enable Sflow
+    SFLOW_PORT        set udp port for Sflow daemon
+    SFLOW_ASN         set your asn number for sflow daemon
 
-### Timezone
+### TimeZone
 
-    TZ
+    TZ                 set timezone  
 
 __Important: Default timezone is UTC !__  
 
-### Docker CLI
+## Docker CLI
 
     docker run -d --name=as-stats -e NETFLOW=1 -e NETFLOW_PORT=5000 -e TZ=Europe/Paris -v <my directory>:/data/as-stats nidebr/as-stats
 
-### Docker Compose
+## Docker Compose
 
 Docker compose file exemple :
 
