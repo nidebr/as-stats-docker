@@ -9,7 +9,7 @@ This tool generate per-AS traffic graphs from NetFlow/sFlow records.
 See [AS-Stats Repository](https://github.com/manuelkasper/AS-Stats) for more details.
 
 ### Screenshot
-[AS-Stats Screenshot](docs/images/as-stats.png "AS-Stats Screenshot")
+![AS-Stats Screenshot](docs/images/as-stats.png "AS-Stats Screenshot")
 
 How to
 ------
