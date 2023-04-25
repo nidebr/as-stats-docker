@@ -22,9 +22,19 @@ if [[ $SFLOW == 1 ]] ; then
 
   # Own AS Number is required for sflow
   args+=("-a" "$SFLOW_ASN")
+
+  # Enable peer-as statistics if requested
+  if [[ $SFLOW_PEERAS == 1 ]] ; then
+    args+=("-n")
+  fi
 else
   # Disable sFlow
   args+=("-P" "0")
+fi
+
+# Enable IP<->ASN mapping with provided JSON file path
+if [[ -v IP2AS_PATH ]]; then
+  args+=("-m" "$IP2AS_PATH")
 fi
 
 # lance AS-Stats
