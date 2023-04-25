@@ -1,6 +1,7 @@
 FROM alpine:3.17 as builder
 RUN apk add --no-cache perl perl-app-cpanminus make perl-dev musl-dev gcc && rm -rf /var/cache/apk/*
 RUN cpanm File::Find::Rule@0.34 Net::sFlow@0.11 Text::Glob@0.11 Number::Compare@0.03 TryCatch@1.003002
+ADD https://raw.githubusercontent.com/JackSlateur/perl-ip2as/master/ip2as.pm /usr/local/lib/perl5/site_perl/ip2as.pm
 
 FROM alpine:3.17
 
