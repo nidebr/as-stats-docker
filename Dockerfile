@@ -37,7 +37,7 @@ RUN chmod +x /usr/sbin/stats-day
 ADD files/startup.sh /root
 ADD files/supervisord.conf /etc/supervisord.conf
 
-COPY --from=builder /usr/local/lib /usr/local/lib
+COPY --from=builder /usr/local /usr/local
 
 RUN chmod +x /root/startup.sh
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
