@@ -5,7 +5,7 @@ ADD https://raw.githubusercontent.com/JackSlateur/perl-ip2as/master/ip2as.pm /us
 
 FROM alpine:3.17
 
-RUN apk add --no-cache supervisor nginx bash curl perl rrdtool perl-rrd perl-dbi perl-dbd-sqlite git php81-fpm php81-sqlite3 ttf-dejavu tzdata && rm -rf /var/cache/apk/*
+RUN apk add --no-cache supervisor nginx bash curl perl rrdtool perl-rrd perl-dbi perl-dbd-sqlite git php81-fpm php81-sqlite3 ttf-dejavu tzdata perl-net-patricia perl-json-xs && rm -rf /var/cache/apk/*
 
 WORKDIR /root/
 
