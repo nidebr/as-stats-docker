@@ -4,7 +4,7 @@ RUN cpanm File::Find::Rule@0.34 Net::sFlow@0.11 Text::Glob@0.11 Number::Compare@
 
 FROM alpine:3.17
 
-RUN apk add --no-cache supervisor nginx bash curl perl rrdtool perl-rrd perl-dbi git php81-fpm php81-sqlite3 ttf-dejavu tzdata && rm -rf /var/cache/apk/*
+RUN apk add --no-cache supervisor nginx bash curl perl rrdtool perl-rrd perl-dbi perl-dbd-sqlite git php81-fpm php81-sqlite3 ttf-dejavu tzdata && rm -rf /var/cache/apk/*
 
 WORKDIR /root/
 
