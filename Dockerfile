@@ -1,26 +1,12 @@
+FROM alpine:3.17 as builder
+RUN apk add --no-cache perl perl-app-cpanminus make perl-dev musl-dev gcc && rm -rf /var/cache/apk/*
+RUN cpanm File::Find::Rule@0.34 Net::sFlow@0.11 Text::Glob@0.11 Number::Compare@0.03 TryCatch@1.003002
+
 FROM alpine:3.17
 
-RUN apk add --no-cache supervisor nginx bash curl perl rrdtool make perl-rrd perl-dbi git php81-fpm php81-sqlite3 ttf-dejavu tzdata && rm -rf /var/cache/apk/*
+RUN apk add --no-cache supervisor nginx bash curl perl rrdtool perl-rrd perl-dbi git php81-fpm php81-sqlite3 ttf-dejavu tzdata && rm -rf /var/cache/apk/*
 
 WORKDIR /root/
-
-RUN curl --location http://search.cpan.org/CPAN/authors/id/R/RC/RCLAMP/File-Find-Rule-0.34.tar.gz | tar -xzf - \
-    && cd File-Find-Rule-0.34/ \
-    && perl Makefile.PL ; make ; make install
-
-RUN curl --location http://search.cpan.org/CPAN/authors/id/E/EL/ELISA/Net-sFlow-0.11.tar.gz | tar -xzf - \
-    && cd Net-sFlow-0.11/ \
-    && perl Makefile.PL ; make ; make install
-
-RUN curl --location https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/Text-Glob-0.11.tar.gz | tar -xzf - \
-    && cd Text-Glob-0.11/ \
-    && perl Makefile.PL ; make ; make install
-
-RUN curl --location  http://search.cpan.org/CPAN/authors/id/R/RC/RCLAMP/Number-Compare-0.03.tar.gz | tar -xzf - \
-    && cd Number-Compare-0.03/ \
-    && perl Makefile.PL ; make ; make install
-
-RUN rm -Rf Net-sFlow-0.11 File-Find-Rule-0.34 Text-Glob-0.11 Number-Compare-0.03
 
 RUN git clone https://github.com/manuelkasper/AS-Stats.git
 
@@ -47,5 +33,8 @@ RUN chmod +x /usr/sbin/stats-day
 
 ADD files/startup.sh /root
 ADD files/supervisord.conf /etc/supervisord.conf
+
+COPY --from=builder /usr/local/lib /usr/local/lib
+
 RUN chmod +x /root/startup.sh
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
