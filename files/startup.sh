@@ -41,9 +41,9 @@ fi
 nohup /root/AS-Stats/bin/asstatd.pl -r /data/as-stats/rrd -k /data/as-stats/conf/knownlinks "${args[@]}" &
 
 # Mise à l'heure
-if [ -n $TZ ] ; then
-  cp /usr/share/zoneinfo/$TZ /etc/localtime
-  echo $TZ > /etc/timezone
+if [[ -n $TZ ]] ; then
+  cp "/usr/share/zoneinfo/$TZ" /etc/localtime
+  echo "$TZ" > /etc/timezone
 else
   cp /usr/share/zoneinfo/UTC /etc/localtime
   echo UTC > /etc/timezone
