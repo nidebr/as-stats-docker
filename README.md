@@ -46,6 +46,11 @@ __Important: you must use tabs, not spaces, to separate fields!__
     SFLOW             set 1 if you want enable SFlow
     SFLOW_PORT        set udp port for SFlow daemon
     SFLOW_ASN         set your asn number for SFlow daemon
+    SFLOW_PEERAS      set 1 if you want enable peer-as statistics
+
+### IP<->ASM mapping
+
+    IP2AS_PATH        set to path (inside container) containing JSON file for IP<->ASN mapping
 
 ### TimeZone
 
